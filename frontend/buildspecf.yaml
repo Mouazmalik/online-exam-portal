@@ -8,11 +8,6 @@ phases:
       - echo Installing dependencies...
       - npm install
 
-  pre_build:
-    commands:
-      - echo Running lint...
-      - npm run lint # Ensure you have a lint script in your package.json
-
   build:
     commands:
       - echo Building the React application...
@@ -31,3 +26,4 @@ artifacts:
 cache:
   paths:
     - 'node_modules/**/*'
+

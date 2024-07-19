@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Building the React application...
-      - npm run start
+      - npm run build
 
   post_build:
     commands:

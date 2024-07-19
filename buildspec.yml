@@ -5,24 +5,38 @@ phases:
     runtime-versions:
       nodejs: 14
     commands:
-      - echo Installing dependencies...
-      - cd admin-portal-frontend && npm install
-      - cd ../examportalbackend && npm install
+      - echo "Installing dependencies for frontend..."
+      - cd frontend
+      - npm install
+      - echo "Installing dependencies for backend..."
+      - cd ../backend
+      - npm install
+      - echo "Installing dependencies for user-portal-frontend..."
+      - cd ../user-portal-frontend
+      - npm install
   build:
     commands:
-      - echo Building admin-portal-frontend...
-      - cd ../admin-portal-frontend && npm run build
-      - echo Running tests for examportalbackend...
-      - cd ../examportalbackend && npm run test
+      - echo "Building frontend..."
+      - cd ../frontend
+      - npm run build
+      - echo "Building user-portal-frontend..."
+      - cd ../user-portal-frontend
+      - npm run build
+      - echo "Running tests for backend..."
+      - cd ../backend
+      - npm run test
   post_build:
     commands:
-      - echo Build completed.
+      - echo "Build completed."
 artifacts:
   files:
     - '**/*'
-    - 'admin-portal-frontend/build/**/*'
+    - 'frontend/build/**/*'
+    - 'user-portal-frontend/build/**/*'
   discard-paths: yes
 cache:
   paths:
-    - 'admin-portal-frontend/node_modules/**/*'
-    - 'examportalbackend/node_modules/**/*'
+    - 'frontend/node_modules/**/*'
+    - 'backend/node_modules/**/*'
+    - 'user-portal-frontend/node_modules/**/*'
+

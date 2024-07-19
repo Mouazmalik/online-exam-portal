@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14 # or the version compatible with your project
+    commands:
+      - echo Installing dependencies...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Running lint...
+      - npm run lint # Ensure you have a lint script in your package.json
+
+  build:
+    commands:
+      - echo Building the React application...
+      - npm run build
+
+  post_build:
+    commands:
+      - echo Build completed
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build
+  discard-paths: yes
+
+cache:
+  paths:
+    - 'node_modules/**/*'
